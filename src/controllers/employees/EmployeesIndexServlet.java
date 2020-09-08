@@ -36,7 +36,7 @@ public class EmployeesIndexServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 	    EntityManager em = DBUtil.createEntityManager();
 
-        int page = 1;
+	    int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(NumberFormatException e) { }
@@ -47,6 +47,7 @@ public class EmployeesIndexServlet extends HttpServlet {
 
         long employees_count = (long)em.createNamedQuery("getEmployeesCount", Long.class)
                                        .getSingleResult();
+
 
         em.close();
 
