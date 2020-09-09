@@ -1,7 +1,6 @@
 package controllers.login;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,10 +27,7 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	    request.getSession().removeAttribute("login_employee");
-
-        request.getSession().setAttribute("flush", "ログアウトしました。");
-        response.sendRedirect(request.getContextPath() + "/login");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 }
