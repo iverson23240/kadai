@@ -19,11 +19,12 @@ import models.validators.ReportValidator;
 import utils.DBUtil;
 /**
  * Servlet implementation class ReportsCreateServlet
+
  */
 @WebServlet("/reports/create")
-public class ReportsCreateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+public class ReportsCreateServlet<iine> extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,12 +33,13 @@ public class ReportsCreateServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	    String _token = (String)request.getParameter("_token");
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        String _token = (String)request.getParameter("_token");
+
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
@@ -54,10 +56,12 @@ public class ReportsCreateServlet extends HttpServlet {
 
             r.setTitle(request.getParameter("title"));
             r.setContent(request.getParameter("content"));
+            r.setLike_iine(0);
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             r.setCreated_at(currentTime);
             r.setUpdated_at(currentTime);
+
 
             List<String> errors = ReportValidator.validate(r);
             if(errors.size() > 0) {
@@ -79,6 +83,14 @@ public class ReportsCreateServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/reports/index");
             }
         }
-	}
 
-}
+
+        }
+
+
+    }
+
+
+
+
+

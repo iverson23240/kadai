@@ -60,6 +60,9 @@ public class Report {
 
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
+    
+    @Column(name = "like_iine", nullable = false)
+    private Integer like_iine;
 
     public Integer getId() {
         return id;
@@ -79,6 +82,9 @@ public class Report {
 
     public Date getReport_date() {
         return report_date;
+    }
+    public  Integer  getLike_iine() {
+        return like_iine;
     }
 
     public void setReport_date(Date report_date) {
@@ -116,4 +122,23 @@ public class Report {
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
     }
-}
+
+    public void setLike_iine(Integer like_iine) {
+        this.like_iine = like_iine;
+    }
+    }
+       
+    
+       
+        
+    
+   
+  
+    
+
+    
+        
+    
+
+
+
